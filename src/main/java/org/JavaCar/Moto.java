@@ -3,11 +3,11 @@ package org.JavaCar;
 public class Moto extends Vehicle {
     public int cilindrada;
 
-    public Moto(java.lang.String matricula, java.lang.String marca, java.lang.String model, double preuBase, Motor motor, Roda[] rodes, int cilindrada) {
+    public Moto(String matricula, String marca, String model, double preuBase, int cilindrada, Motor motor, Roda[] rodes) {
         super(matricula, marca, model, preuBase, motor, rodes);
         this.cilindrada = cilindrada;
 
-        if (cilindrada > 500) {
+        if (cilindrada >500) {
             this.preuBase += 5;
         }
     }

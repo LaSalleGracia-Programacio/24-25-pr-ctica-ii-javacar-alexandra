@@ -3,7 +3,7 @@ import java.util.List;
 public class Furgoneta extends Vehicle {
     private int capacitatCarga;
 
-    public Furgoneta(java.lang.String matricula, java.lang.String marca, java.lang.String model, double preuBase, Motor motor, Roda[] rodes, int capacitatCarga) {
+    public Furgoneta(String matricula, String marca, String model, double preuBase, int capacitatCarga, Motor motor, Roda[] rodes) {
         super(matricula, marca, model, preuBase, motor, rodes);
         this.capacitatCarga = capacitatCarga;
         if (capacitatCarga >1000)
