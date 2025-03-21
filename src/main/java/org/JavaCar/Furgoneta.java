@@ -33,4 +33,8 @@ public class Furgoneta extends Vehicle {
     public double calcularPreu(int dies) {
         return 0;
     }
+
+    public void setCapacitatCarga(int capacitatCarga) {
+        this.capacitatCarga = capacitatCarga;
+    }
 }

@@ -29,5 +29,9 @@ public class Cotxe extends Vehicle {
     public double calcularPreu(int dies) {
         return 0;
     }
+
+    public void setNombrePlaces(int nombrePlaces) {
+        this.nombrePlaces = nombrePlaces;
+    }
 }
 

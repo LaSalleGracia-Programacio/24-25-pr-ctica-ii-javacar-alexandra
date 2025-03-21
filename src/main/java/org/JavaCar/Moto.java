@@ -1,7 +1,7 @@
 package org.JavaCar;
 
 public class Moto extends Vehicle {
-    public int cilindrada;
+    private int cilindrada;
 
     public Moto(String matricula, String marca, String model, double preuBase, int cilindrada, Motor motor, Roda[] rodes) {
         super(matricula, marca, model, preuBase, motor, rodes);
@@ -32,5 +32,9 @@ public class Moto extends Vehicle {
     @Override
     public double calcularPreu(int dies) {
         return 0;
+    }
+
+    public void setCilindrada(int cilindrada) {
+        this.cilindrada = cilindrada;
     }
 }

@@ -25,4 +25,12 @@ public class Motor{
                 ", potencia=" + potencia +
                 '}';
     }
+
+    public void setTipus(String tipus) {
+        this.tipus = tipus;
+    }
+
+    public void setPotencia(int potencia) {
+        this.potencia = potencia;
+    }
 }

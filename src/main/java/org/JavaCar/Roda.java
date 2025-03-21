@@ -25,4 +25,12 @@ public class Roda {
                 ", diametre=" + diametre +
                 '}';
     }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public void setDiametre(int diametre) {
+        this.diametre = diametre;
+    }
 }
