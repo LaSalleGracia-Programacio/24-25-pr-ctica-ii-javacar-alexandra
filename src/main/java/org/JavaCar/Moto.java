@@ -28,4 +28,9 @@ public class Moto extends Vehicle {
                 "Marca de roda: " + rodes[0].getMarca() + "\n";
         return motoInfo;
     }
+
+    @Override
+    public double calcularPreu(int dies) {
+        return 0;
+    }
 }

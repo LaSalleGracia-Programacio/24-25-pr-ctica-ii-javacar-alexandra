@@ -25,5 +25,9 @@ public class Cotxe extends Vehicle {
         return cotxeInfo;
     }
 
+    @Override
+    public double calcularPreu(int dies) {
+        return 0;
+    }
 }
 

@@ -17,4 +17,12 @@ public class Roda {
     public int getDiametre() {
         return diametre;
     }
+
+    @Override
+    public String toString() {
+        return "Roda{" +
+                "marca='" + marca + '\'' +
+                ", diametre=" + diametre +
+                '}';
+    }
 }

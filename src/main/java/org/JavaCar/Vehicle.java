@@ -41,8 +41,4 @@ public abstract class Vehicle implements Llogable {
     public Roda[] getRodes() {
         return rodes;
     }
-
-    public void String calcularEtiquetaAmbiental();
-
-
 }
