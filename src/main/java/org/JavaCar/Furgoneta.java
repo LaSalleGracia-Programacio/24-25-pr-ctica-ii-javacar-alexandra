@@ -15,6 +15,11 @@ public class Furgoneta extends Vehicle {
     public int getCapacitatCarga() {
         return capacitatCarga;
     }
+
+    @Override
+    public double calcularPreu(int dies) {
+        return super.calcularPreu(dies);
+    }
     @Override
     public String toString() {
         String infoFurgoneta= "Marca: " + marca + " | " +
@@ -29,10 +34,7 @@ public class Furgoneta extends Vehicle {
     }
 
 
-    @Override
-    public double calcularPreu(int dies) {
-        return 0;
-    }
+
 
     public void setCapacitatCarga(int capacitatCarga) {
         this.capacitatCarga = capacitatCarga;

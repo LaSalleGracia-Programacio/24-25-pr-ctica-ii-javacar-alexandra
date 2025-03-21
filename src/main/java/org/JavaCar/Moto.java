@@ -17,6 +17,11 @@ public class Moto extends Vehicle {
     }
 
     @Override
+    public double calcularPreu(int dies) {
+        return super.calcularPreu(dies);
+    }
+
+    @Override
     public String toString() {
         String motoInfo = "Marca: " + marca + " | " +
                 "Model: " + model + "\n" +
@@ -27,11 +32,6 @@ public class Moto extends Vehicle {
                 "Tipus de motor: " + motor.getTipus() + " | " +
                 "Marca de roda: " + rodes[0].getMarca() + "\n";
         return motoInfo;
-    }
-
-    @Override
-    public double calcularPreu(int dies) {
-        return 0;
     }
 
     public void setCilindrada(int cilindrada) {

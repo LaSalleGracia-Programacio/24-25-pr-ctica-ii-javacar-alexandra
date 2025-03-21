@@ -72,4 +72,9 @@ public abstract class Vehicle implements Llogable {
     public void setAnyMatriculacio(int anyMatriculacio) {
         this.anyMatriculacio = anyMatriculacio;
     }
+
+    @Override
+    public double calcularPreu(int dies) {
+            return dies*preuBase;
+    }
 }

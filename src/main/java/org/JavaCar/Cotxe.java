@@ -1,6 +1,6 @@
 package org.JavaCar;
 import java.util.Arrays;
-public class Cotxe extends Vehicle {
+public class Cotxe extends Vehicle{
     private int nombrePlaces;
 
     public Cotxe(String matricula, String marca, String model, double preuBase, int nombrePlaces, Motor motor, Roda[] rodes) {
@@ -23,11 +23,6 @@ public class Cotxe extends Vehicle {
                 "Tipus de motor: " + motor.getTipus() + " | " +
                 "Marca de roda: " + rodes[0].getMarca() + "\n";
         return cotxeInfo;
-    }
-
-    @Override
-    public double calcularPreu(int dies) {
-        return 0;
     }
 
     public void setNombrePlaces(int nombrePlaces) {
