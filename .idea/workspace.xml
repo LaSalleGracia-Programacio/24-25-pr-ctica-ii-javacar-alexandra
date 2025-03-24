@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea1b6622-cabf-4029-8ce0-e0dde2e5d840" name="Changes" comment="">
-<<<<<<< HEAD
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/JavaCar/Furgoneta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/JavaCar/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-=======
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/JavaCar/Moto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/JavaCar/Cotxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/JavaCar/Cotxe.java" afterDir="false" />
->>>>>>> 53fc115c68c0594472ea0200902b2126e1a9d6d2
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/JavaCar/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/JavaCar/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/JavaCar/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,15 +39,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ALESA/Desktop/DAM/24-25-pr-ctica-ii-javacar-alexandra&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/ALESA/Desktop/DAM/24-25-pr-ctica-ii-javacar-alexandra"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="24-25-pr-ctica-ii-javacar-alexandra" />
