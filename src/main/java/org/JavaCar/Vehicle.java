@@ -7,15 +7,19 @@ public abstract class Vehicle implements Llogable {
     protected double preuBase;
     protected Motor motor;
     protected Roda[] rodes;
-    protected int anyMatriculacio;
+    protected int anyFabricacio;
+    protected EtiquetaAmbiental etiquetaAmbiental;
 
-    public Vehicle(String matricula, String marca, String model, double preuBase, Motor motor, Roda[] rodes) {
+    public Vehicle(String matricula, String marca, String model, double preuBase, Motor motor, Roda[] rodes, int anyFabricacio) {
         this.matricula = matricula;
         this.marca = marca;
         this.model = model;
         this.preuBase = preuBase;
         this.motor = motor;
         this.rodes = rodes;
+        this.anyFabricacio = anyFabricacio;
+        this.etiquetaAmbiental = calculEtiqueta();
+
     }
 
     public String getMatricula() {
@@ -29,8 +33,8 @@ public abstract class Vehicle implements Llogable {
     public String getModel() {
         return model;
     }
-    public int getAnyMatriculacio() {
-        return anyMatriculacio;
+    public int getAnyFabricacio() {
+        return anyFabricacio;
     }
 
     public double getPreuBase() {
@@ -44,6 +48,7 @@ public abstract class Vehicle implements Llogable {
     public Roda[] getRodes() {
         return rodes;
     }
+
 
     public void setMatricula(String matricula) {
         this.matricula = matricula;
@@ -69,12 +74,31 @@ public abstract class Vehicle implements Llogable {
         this.rodes = rodes;
     }
 
-    public void setAnyMatriculacio(int anyMatriculacio) {
-        this.anyMatriculacio = anyMatriculacio;
+    public void setAnyFabricacio(int anyFabricacio) {
+        this.anyFabricacio = anyFabricacio;
+    }
+
+
+    public EtiquetaAmbiental getEtiquetaAmbiental() {
+        return etiquetaAmbiental;
+    }
+
+    public void setEtiquetaAmbiental(EtiquetaAmbiental etiquetaAmbiental) {
+        this.etiquetaAmbiental = etiquetaAmbiental;
     }
 
     @Override
     public double calcularPreu(int dies) {
             return dies*preuBase;
+    }
+
+    public EtiquetaAmbiental calculEtiqueta() {
+        if (anyFabricacio <= 2000) return EtiquetaAmbiental.SenseDistintiu;
+        if (anyFabricacio > 2000 && anyFabricacio <= 2005) return EtiquetaAmbiental.C;
+        if (anyFabricacio > 2005 && anyFabricacio <= 2015) return EtiquetaAmbiental.B;
+        if (motor.getTipus().equalsIgnoreCase("Hibrid") || motor.getTipus().equals("Gas") || anyFabricacio > 2015) return EtiquetaAmbiental.ECO;
+        if (motor.getTipus().equalsIgnoreCase("Electric") || motor.getTipus().equalsIgnoreCase("Elèctric")) return EtiquetaAmbiental.ZeroEmisions;
+
+        return EtiquetaAmbiental.SenseDistintiu;
     }
 }
