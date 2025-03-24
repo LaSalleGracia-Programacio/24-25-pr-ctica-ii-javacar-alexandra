@@ -54,6 +54,19 @@ public class Administrador {
         System.out.println("Eliminant un vehicle...");
 
     }
+    public void veureVehicles() {
+        System.out.println("Llistant tots els vehicles...");
 
-    
+    }
+
+    public void veureIngressosTotals() {
+        System.out.println("Mostrant ingressos totals...");
+
+    }
+
+    public void veureVehiclesAlquilats() {
+        System.out.println("Mostrant vehicles actualment alquilats...");
+
+    }
+
 }
