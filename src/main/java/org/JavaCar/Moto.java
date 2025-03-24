@@ -26,7 +26,7 @@ public class Moto extends Vehicle {
         String motoInfo = "Marca: " + marca + " | " +
                 "Model: " + model + "\n" +
                 "Matricula: " + matricula + " | " +
-                "Any matriculació: " + anyMatriculacio + "\n" +
+                "Any fabricació: " + anyFabricacio + "\n" +
                 "Preu per dia: " + preuBase + " | " +
                 "Cilindrada: " + cilindrada + "\n" +
                 "Tipus de motor: " + motor.getTipus() + " | " +

@@ -25,11 +25,13 @@ public class Furgoneta extends Vehicle {
         String infoFurgoneta= "Marca: " + marca + " | " +
                 "Model: " + model + "\n" +
                 "Matricula: " + matricula + " | " +
-                "Any de matriculació: " + anyMatriculacio + "\n" +
                 "Preu/dia: " + preuBase + " | " +
                 "Capacitat de càrrega: " + capacitatCarga + "kg\n" +
                 "Tipus de motor: " + motor.getTipus() + " | " +
-                "Marca de roda: " + rodes[0].getMarca() + "\n";
+                "Marca de roda: " + rodes[0].getMarca() + "\n" +
+                "Any de fabricació: " + anyFabricacio + "\n" +
+                "Etiqueta Ambiental: " + etiquetaAmbiental;
+
         return infoFurgoneta;
     }
 

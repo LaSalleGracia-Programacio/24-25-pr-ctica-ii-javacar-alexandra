@@ -7,6 +7,7 @@ public abstract class Vehicle implements Llogable {
     protected double preuBase;
     protected Motor motor;
     protected Roda[] rodes;
+
     protected int anyFabricacio;
     protected EtiquetaAmbiental etiquetaAmbiental;
 
@@ -18,18 +19,10 @@ public abstract class Vehicle implements Llogable {
         this.motor = motor;
         this.rodes = rodes;
         this.etiquetaAmbiental = calculEtiqueta();
+
+        anyFabricacio=0;
     }
 
-    public Vehicle(String matricula, String marca, String model, double preuBase, Motor motor, Roda[] rodes, int anyFabricacio){
-        this.matricula = matricula;
-        this.marca = marca;
-        this.model = model;
-        this.preuBase = preuBase;
-        this.motor = motor;
-        this.rodes = rodes;
-        this.anyFabricacio = anyFabricacio;
-        this.etiquetaAmbiental = calculEtiqueta();
-    }
     public String getMatricula() {
         return matricula;
     }
