@@ -12,11 +12,11 @@ public class GestorLloguers {
         return preutotal;
     }
 
-    public static List<Vehicle> trobarPerPreu(List<Vehicle> vehicles, double preuMax) {
+    public static List<Vehicle> filtrar(List<Vehicle> vehicles, double preu) {
         List<Vehicle> trobarVehicle = new ArrayList<>();
 
         for (int i = 0; i < vehicles.size(); i++) {
-            if (vehicles.get(i).getPreuBase() < preuMax)
+            if (vehicles.get(i).getPreuBase() < preu)
                 trobarVehicle.add(vehicles.get(i));
         }
         return trobarVehicle;

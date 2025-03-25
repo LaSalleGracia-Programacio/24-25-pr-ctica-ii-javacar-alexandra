@@ -9,7 +9,6 @@ public class Client {
     private int unicID;
     private String nom;
     private String cognom;
-    private List<Vehicle> vehiclesClient;
 
     public Client(int unicID, String nom, String cognom) {
         this.unicID = unicID;
@@ -29,18 +28,18 @@ public class Client {
         return cognom;
     }
 
-    public void menuClient(){
+    public void menuClient(List<Vehicle> vehicles){
         boolean sortir = false;
         do{
             System.out.println("""
                     Benvingut a JavaCar!Escull una opció:
                     1. Alquilar un vehicle
                     2. Veure vehicles disponibles
-                    3. Retornar un vehicle
-                    4. Veure els teus vehicles alquilats
-                    5. Tornar enrere""");
+                    3  Filtrar vehicles per preu
+                    4. Retornar un vehicle
+                    5. Veure els teus vehicles alquilats
+                    6. Tornar enrere""");
             int opcio = input.nextInt();
-            input.nextLine(); // Consumir el salt de línia
 
             switch (opcio) {
                 case 1:
@@ -50,12 +49,14 @@ public class Client {
                     mostrarVehicles();
                     break;
                 case 3:
+                    filtrarVehicles(vehicles);
+                case 4:
                     retornarVehicle();
                     break;
-                case 4:
+                case 5:
                     veureAlquilats();
                     break;
-                case 5:
+                case 6:
                     sortir = true;
                     break;
                 default:
@@ -65,9 +66,21 @@ public class Client {
     }
 
     public void alquilarVehicle(){
+
     }
 
     public void mostrarVehicles(){
+
+    }
+
+    public void filtrarVehicles(List<Vehicle> vehicles){
+
+        System.out.println("Digues el preu per el qual vols filtrar: ");
+        double preu = input.nextDouble();
+
+        List<Vehicle> trobarVehicle = GestorLloguers.filtrar(vehicles, preu);
+
+        System.out.println(trobarVehicle);
 
     }
 
@@ -78,4 +91,6 @@ public class Client {
     public void veureAlquilats(){
 
     }
+
+
 }
