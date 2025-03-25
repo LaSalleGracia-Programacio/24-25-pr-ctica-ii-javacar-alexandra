@@ -36,10 +36,12 @@ public class Client {
                     Benvingut a JavaCar!Escull una opció:
                     1. Alquilar un vehicle
                     2. Veure vehicles disponibles
-                    3. Retornar un vehicle.
+                    3. Retornar un vehicle
                     4. Veure els teus vehicles alquilats
-                    5. Tornar enrere.""");
+                    5. Tornar enrere""");
             int opcio = input.nextInt();
+            input.nextLine(); // Consumir el salt de línia
+
             switch (opcio) {
                 case 1:
                     alquilarVehicle();
@@ -56,6 +58,8 @@ public class Client {
                 case 5:
                     sortir = true;
                     break;
+                default:
+                    System.out.println("Opció no vàlida, torna a intentar-ho.");
             }
         } while (!sortir);
     }

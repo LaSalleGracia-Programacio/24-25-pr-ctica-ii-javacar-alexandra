@@ -11,7 +11,7 @@ public abstract class Vehicle implements Llogable {
     protected int anyFabricacio;
     protected EtiquetaAmbiental etiquetaAmbiental;
 
-    public Vehicle(String matricula, String marca, String model, double preuBase, Motor motor, Roda[] rodes){
+    public Vehicle(String matricula, String marca, String model, double preuBase, Motor motor, Roda[] rodes) {
         this.matricula = matricula;
         this.marca = marca;
         this.model = model;
@@ -20,7 +20,7 @@ public abstract class Vehicle implements Llogable {
         this.rodes = rodes;
         this.etiquetaAmbiental = calculEtiqueta();
 
-        anyFabricacio=0;
+        anyFabricacio = 0;
     }
 
     public String getMatricula() {
@@ -34,6 +34,7 @@ public abstract class Vehicle implements Llogable {
     public String getModel() {
         return model;
     }
+
     public int getAnyFabricacio() {
         return anyFabricacio;
     }
@@ -90,16 +91,24 @@ public abstract class Vehicle implements Llogable {
 
     @Override
     public double calcularPreu(int dies) {
-            return dies*preuBase;
+        return dies * preuBase;
     }
 
     public EtiquetaAmbiental calculEtiqueta() {
-        if (anyFabricacio <= 2000) return EtiquetaAmbiental.SenseDistintiu;
-        if (anyFabricacio > 2000 && anyFabricacio <= 2005) return EtiquetaAmbiental.C;
-        if (anyFabricacio > 2005 && anyFabricacio <= 2015) return EtiquetaAmbiental.B;
-        if (motor.getTipus().equalsIgnoreCase("Hibrid") || motor.getTipus().equals("Gas") || anyFabricacio > 2015) return EtiquetaAmbiental.ECO;
-        if (motor.getTipus().equalsIgnoreCase("Electric") || motor.getTipus().equalsIgnoreCase("Elèctric")) return EtiquetaAmbiental.ZeroEmisions;
-
-        return EtiquetaAmbiental.SenseDistintiu;
+        if (anyFabricacio < 2000) {
+            etiquetaAmbiental = EtiquetaAmbiental.SenseDistintiu;
+        } else if (anyFabricacio <= 2005) {
+            etiquetaAmbiental = EtiquetaAmbiental.B;
+        } else {
+            etiquetaAmbiental = EtiquetaAmbiental.C;
+            if (motor.getTipus().equalsIgnoreCase("Hibrid") || motor.getTipus().equals("Gas") || anyFabricacio > 2015) {
+                etiquetaAmbiental = EtiquetaAmbiental.ECO;
+            }
+            if (motor.getTipus().equalsIgnoreCase("Electric")) {
+                etiquetaAmbiental = EtiquetaAmbiental.ZeroEmisions;
+            }
+        }
+        return etiquetaAmbiental;
     }
 }
+

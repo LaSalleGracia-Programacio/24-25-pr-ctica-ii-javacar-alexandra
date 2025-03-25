@@ -5,17 +5,16 @@ import java.util.Scanner;
 public class Administrador {
     static Scanner input = new Scanner(System.in);
 
-    public void menuAdministrador() {
+    public void menuAdmin() {
         boolean sortir = false;
         do {
             System.out.println("""
                     Benvingut a la gestió de JavaCar! Escull una opció:
                     1. Afegir un vehicle
                     2. Eliminar un vehicle
-                    3. Veure tots els vehicles
-                    4. Veure ingressos totals
-                    5. Veure vehicles alquilats
-                    6. Tornar enrere
+                    3. Veure tots els vehicle
+                    4. Veure vehicles alquilats
+                    5. Tornar enrere
                     """);
             int opcio = input.nextInt();
             input.nextLine(); // Consumir el salt de línia
@@ -31,12 +30,9 @@ public class Administrador {
                     veureVehicles();
                     break;
                 case 4:
-                    veureIngressosTotals();
-                    break;
-                case 5:
                     veureVehiclesAlquilats();
                     break;
-                case 6:
+                case 5:
                     sortir = true;
                     break;
                 default:
@@ -56,11 +52,6 @@ public class Administrador {
     }
     public void veureVehicles() {
         System.out.println("Llistant tots els vehicles...");
-
-    }
-
-    public void veureIngressosTotals() {
-        System.out.println("Mostrant ingressos totals...");
 
     }
 
