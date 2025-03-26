@@ -85,9 +85,6 @@ public class Client {
             return;
         }
 
-        System.out.println("Introdueix el teu ID");
-        int unicID= input.nextInt();;
-
         System.out.println("Vehicles disponibles per llogar:");
         System.out.println("==========================================");
 
@@ -190,7 +187,49 @@ public class Client {
     }
 
     public void retornarVehicle(){
+        List<String> vehiclesLlogats = admin.getMatriculesLlogadesPerClient(unicID);
 
+        if (vehiclesLlogats.isEmpty()) {
+            System.out.println("No tens cap vehicle llogat actualment.");
+            return;
+        }
+
+        System.out.println("Els teus vehicles llogats:");
+        System.out.println("==========================================");
+
+        for (int i = 0; i < vehiclesLlogats.size(); i++) {
+            System.out.println((i + 1) + ". Matrícula: " + vehiclesLlogats.get(i));
+        }
+
+        System.out.println("==========================================");
+        System.out.println("Introdueix el número del vehicle que vols retornar:");
+
+        int seleccio= input.nextInt();
+        input.nextLine();
+
+
+        if (seleccio <= 0 || seleccio > vehiclesLlogats.size()) {
+            System.out.println("Operació cancel·lada o selecció no vàlida.");
+            return;
+        }
+
+        String matriculaARetornar = vehiclesLlogats.get(seleccio - 1);
+
+        System.out.println("Estàs segur que vols retornar el vehicle? (s/n)");
+        String confirmacio = input.nextLine();
+
+        if (confirmacio.equalsIgnoreCase("s")) {
+            // Eliminar el lloguer i retornar el vehicle a la llista de disponibles
+            // Verificant que aquest client és qui va llogar el vehicle
+            boolean retornatCorrectament = admin.eliminarLloguer(matriculaARetornar, unicID);
+
+            // Si es va retornar correctament, el missatge ja s'ha mostrat en el mètode eliminarLloguer
+            if (!retornatCorrectament) {
+                System.out.println("No s'ha pogut retornar el vehicle. Comprova que siguis el client correcte.");
+            }
+        } else {
+            System.out.println("Operació cancel·lada.");
+        }
     }
 
     public void veureAlquilats(){

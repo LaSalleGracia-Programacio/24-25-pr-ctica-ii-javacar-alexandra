@@ -41,7 +41,10 @@ public class Main {
                     a.menuAdmin();
                     break;
                 case 2:
-                    c.menuClient(vehicles);
+                    seleccionarClient();
+                    if (c != null) {
+                        c.menuClient(vehicles);
+                    }
                     break;
                 case 3:
                     sortir = true;
@@ -148,5 +151,35 @@ public class Main {
 
         System.out.println("S'han creat " + vehicles.size() + " vehicles d'exemple.");
 
+    }
+    public static void seleccionarClient() {
+        if (clients.isEmpty()) {
+            System.out.println("No hi ha clients registrats.");
+            c = null;
+            return;
+        }
+
+        System.out.println("Selecciona un client:");
+        for (int i = 0; i < clients.size(); i++) {
+            Client client = clients.get(i);
+            System.out.println((i + 1) + ". " + client.getNom() + " " + client.getCognom() + " (ID: " + client.getUnicID() + ")");
+        }
+
+        int seleccio;
+        try {
+            String entrada = input.nextLine();
+            seleccio = Integer.parseInt(entrada);
+        } catch (NumberFormatException e) {
+            System.out.println("Si us plau, introdueix un número vàlid.");
+            seleccio = -1;
+        }
+
+        if (seleccio > 0 && seleccio <= clients.size()) {
+            c = clients.get(seleccio - 1);
+            System.out.println("Has seleccionat a: " + c.getNom() + " " + c.getCognom());
+        } else {
+            System.out.println("Selecció no vàlida.");
+            c = null;
+        }
     }
 }

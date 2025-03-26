@@ -198,4 +198,32 @@ public class Administrador {
         lloguers.add(new Lloguer(clientID, matricula, dies));
     }
 
+    public boolean eliminarLloguer(String matricula, int clientID) {
+        // Cercar el lloguer específic
+        boolean trobat = false;
+
+        for (Lloguer lloguer : new ArrayList<>(lloguers)) {
+            if (lloguer.getMatricula().equals(matricula)) {
+                //Verificar que el client que intenta retornar és qui el va llogar
+                if (lloguer.getClientID() == clientID) {
+                    lloguers.remove(lloguer);
+                    System.out.println("Vehicle amb matrícula " + matricula + " ha estat retornat per el client " +
+                            clientID + " i ara està disponible per a nous lloguers.");
+                    trobat = true;
+                } else {
+                    System.out.println("Error: Aquest vehicle va ser llogat per un altre client (ID: " +
+                            lloguer.getClientID() + "). No pots retornar-lo.");
+                    return false;
+                }
+            }
+        }
+
+        if (!trobat) {
+            System.out.println("Error: No s'ha trobat cap lloguer per a aquest vehicle.");
+            return false;
+        }
+
+        return true;
+    }
+
 }
