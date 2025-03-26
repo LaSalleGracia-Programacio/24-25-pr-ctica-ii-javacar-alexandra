@@ -6,8 +6,8 @@ public class GestorLloguers {
     static public double calcularIngressosTotals(List<Vehicle> vehicles, int dies) {
 
         double preutotal = 0;
-        for (int i = 0; i < vehicles.size(); i++) {
-            preutotal += vehicles.get(i).calcularPreu(dies);
+        for (Vehicle vehicle : vehicles) {
+            preutotal += vehicle.calcularPreu(dies);
         }
         return preutotal;
     }
@@ -15,9 +15,9 @@ public class GestorLloguers {
     public static List<Vehicle> filtrar(List<Vehicle> vehicles, double preu) {
         List<Vehicle> trobarVehicle = new ArrayList<>();
 
-        for (int i = 0; i < vehicles.size(); i++) {
-            if (vehicles.get(i).getPreuBase() < preu)
-                trobarVehicle.add(vehicles.get(i));
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getPreuBase() < preu)
+                trobarVehicle.add(vehicle);
         }
         return trobarVehicle;
     }

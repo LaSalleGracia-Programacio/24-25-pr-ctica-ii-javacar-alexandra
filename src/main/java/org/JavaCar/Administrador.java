@@ -8,7 +8,6 @@ public class Administrador {
     static Scanner input = new Scanner(System.in);
     private List<Vehicle> vehicles;
     private List<Client> clients;
-
     private List<Lloguer> lloguers = new ArrayList<>();
 
     public Administrador(List<Vehicle> vehicles, List<Client> clients) {
@@ -16,7 +15,7 @@ public class Administrador {
         this.clients = clients;
     }
 
-    public void menuAdmin() {
+    public void menuAdmin() { // Menu administrador
         boolean sortir = false;
         do {
             System.out.println("""
@@ -57,7 +56,7 @@ public class Administrador {
     }
 
     public void afegirVehicle() {
-        System.out.println("Quin tipus de vehicle vols afegir?");
+        System.out.println("Quin tipus de vehicle vols afegir?"); // Es fa un submenu per veure quin tipus de vehicle es.
         System.out.println("1. Cotxe");
         System.out.println("2. Moto");
         System.out.println("3. Furgoneta");
@@ -69,12 +68,14 @@ public class Administrador {
         String matricula = input.nextLine();
 
 
-        for (Vehicle v : vehicles) {
+        for (Vehicle v : vehicles) { // Comprovar que la matricula no existeixi
             if (v.getMatricula().equals(matricula)) {
                 System.out.println("Error: Ja existeix un vehicle amb aquesta matrícula!");
                 return;
             }
         }
+
+        //Demanar les dades generiques
 
         System.out.println("Introdueix la marca:");
         String marca = input.nextLine();
@@ -117,10 +118,11 @@ public class Administrador {
         for (int i = 0; i < rodes.length; i++) {
             rodes[i] = new Roda(marcaRodes, midaRodes);
         }
+        // Fi demanar dades generiques
 
-        Vehicle nouVehicle = null;
+        Vehicle nouVehicle;
 
-        switch (tipus) {
+        switch (tipus) { // Ara fem el switch i demanem les dades especifiques segons el tipus de vehicle
             case 1:
                 System.out.println("Introdueix el nombre de places:");
                 int places = input.nextInt();
@@ -148,9 +150,8 @@ public class Administrador {
         }
 
         nouVehicle.setAnyFabricacio(anyFabricacio);
-        //Calcular etiqueta ambiental
-        EtiquetaAmbiental etiqueta = nouVehicle.calculEtiqueta();
-        nouVehicle.setEtiquetaAmbiental(etiqueta);
+        EtiquetaAmbiental etiqueta = nouVehicle.calculEtiqueta(); // Calulem la etiqueta ambiental
+        nouVehicle.setEtiquetaAmbiental(etiqueta); // Afegim la etiqueta als detalls del vehicle
         System.out.println("Etiqueta ambiental assignada: " + etiqueta);
         vehicles.add(nouVehicle);
         System.out.println("Vehicle afegit correctament.");
@@ -225,8 +226,8 @@ public class Administrador {
                 // Buscar el client que té llogat aquest vehicle
                 for (Lloguer lloguer : lloguers) {
                     if (lloguer.getMatricula().equals(v.getMatricula())) {
-                        int clientID = lloguer.getClientID();
-                        Client client = trobarClient(clientID);
+                        int clientID = lloguer.getClientID(); // Per cada vehicle llogat agafem les ids
+                        Client client = trobarClient(clientID); // Comprovem la id
 
                         if (client != null) {
                             System.out.println("Llogat per: " + client.getNom() + " " + client.getCognom());
@@ -244,7 +245,7 @@ public class Administrador {
     public void veureIngressosTotals(){
         System.out.println("Introdueix quants dies están llogats els cotxes:");
         int dies=input.nextInt();
-        double ingressos = GestorLloguers.calcularIngressosTotals(vehicles, dies);
+        double ingressos = GestorLloguers.calcularIngressosTotals(vehicles, dies); // Cridar metode de calcular ingressos
         System.out.println("Els ingressos totals actuals son: " + ingressos + "€");
     }
     public void afegirLloguer(int clientID, String matricula, int dies) {
@@ -274,7 +275,7 @@ public class Administrador {
 
         for (Lloguer lloguer : new ArrayList<>(lloguers)) {
             if (lloguer.getMatricula().equals(matricula)) {
-                //Verificar que el client que intenta retornar és qui el va llogar
+                // Verificar que el client que intenta retornar és qui el va llogar
                 if (lloguer.getClientID() == clientID) {
                     lloguers.remove(lloguer);
                     System.out.println("Vehicle amb matrícula " + matricula + " ha estat retornat per el client " +

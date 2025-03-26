@@ -32,7 +32,7 @@ public class Client {
         return cognom;
     }
 
-    public void menuClient(List<Vehicle> vehicles) {
+    public void menuClient(List<Vehicle> vehicles) { // Metode per printejar el menu client
         boolean sortir = false;
         do {
             System.out.println("""
@@ -73,16 +73,16 @@ public class Client {
 
     public void alquilarVehicle(List<Vehicle> vehicles) {
         // Mostrar vehicles disponibles
-        List<Vehicle> disponibles = new ArrayList<>();
-        List<String> matriculesLlogades = admin.getMatriculesLlogades();
+        List<Vehicle> disponibles = new ArrayList<>(); // Crear una llista per emmagatzemar els vehicles disponibles
+        List<String> matriculesLlogades = admin.getMatriculesLlogades(); // Llista per emmagatzemar el vehicles ja alquilats
 
-        for (Vehicle v : vehicles) {
+        for (Vehicle v : vehicles) { // Comprovem si els vehicles que hi han estan alquilats o no
             if (!matriculesLlogades.contains(v.getMatricula())) {
-                disponibles.add(v);
+                disponibles.add(v); // Si no estan alquilats els emmagatzem en la llista
             }
         }
 
-        if (disponibles.isEmpty()) {
+        if (disponibles.isEmpty()) {  // Si no emmagatzema res a la llista es perque no hi han.
             System.out.println("No hi ha vehicles disponibles per llogar.");
             return;
         }
@@ -90,7 +90,7 @@ public class Client {
         System.out.println("Vehicles disponibles per llogar:");
         System.out.println("==========================================");
 
-        for (int i = 0; i < disponibles.size(); i++) {
+        for (int i = 0; i < disponibles.size(); i++) { // Printejar vehicles disponibles
             System.out.println((i + 1) + ". " + disponibles.get(i).getMarca() + " " +
                     disponibles.get(i).getModel() + " (Matrícula: " + disponibles.get(i).getMatricula() +
                     ") - Preu/dia: " + disponibles.get(i).getPreuBase() + "€");
@@ -102,23 +102,24 @@ public class Client {
         int seleccio = input.nextInt();
         input.nextLine(); // Consumir el salt de línia
 
-        if (seleccio <= 0 || seleccio > disponibles.size()) {
+        if (seleccio <= 0 || seleccio > disponibles.size()) {  // Compovar que la seleccio sigui válida
             System.out.println("Operació cancel·lada o selecció no vàlida.");
             return;
         }
 
         Vehicle vehicleSeleccionat = disponibles.get(seleccio - 1);
+        // Agafem la seleccio - 1 perque correspongui als numeros del vehicles printejats per pantalla.
 
         System.out.println("Quants dies vols llogar el vehicle?");
         int dies = input.nextInt();
         input.nextLine(); // Consumir el salt de línia
 
-        if (dies <= 0) {
+        if (dies <= 0) { // Validar que els dies siguin un numero positiu
             System.out.println("Error: Els dies han de ser un número positiu.");
             return;
         }
 
-        double preuTotal = vehicleSeleccionat.calcularPreu(dies);
+        double preuTotal = vehicleSeleccionat.calcularPreu(dies); // Cridem al metode per calcular el preu total
 
         System.out.println("Resum del lloguer:");
         System.out.println("Vehicle: " + vehicleSeleccionat.getMarca() + " " + vehicleSeleccionat.getModel());
@@ -129,8 +130,8 @@ public class Client {
 
         String confirmacio = input.nextLine();
 
-        if (confirmacio.equalsIgnoreCase("s")) {
-            admin.afegirLloguer(unicID, vehicleSeleccionat.getMatricula(), dies);
+        if (confirmacio.equalsIgnoreCase("s")) { // Comprovem el input
+            admin.afegirLloguer(unicID, vehicleSeleccionat.getMatricula(), dies); // Afegim el lloguer
             System.out.println("Vehicle llogat correctament!");
             System.out.println();
         } else {
@@ -147,7 +148,7 @@ public class Client {
 
         boolean hiHaDisponibles = false;
 
-        for (Vehicle v : vehicles) {
+        for (Vehicle v : vehicles) { // Comprovar quins vehicles están disponibles
             if (!matriculesLlogades.contains(v.getMatricula())) {
                 hiHaDisponibles = true;
                 System.out.println(v);
@@ -165,7 +166,7 @@ public class Client {
         System.out.println("Digues el preu per el qual vols filtrar: ");
         double preu = input.nextDouble();
 
-        List<Vehicle> trobarVehicle = GestorLloguers.filtrar(vehicles, preu);
+        List<Vehicle> trobarVehicle = GestorLloguers.filtrar(vehicles, preu); // Cridar el metode pero filtrar per preu i ho emmagatzem a la llista
 
         if (trobarVehicle.isEmpty()) {
             System.out.println("No s'han trobat vehicles amb un preu inferior a " + preu + "€.");
@@ -181,7 +182,7 @@ public class Client {
         boolean hiHaDisponibles = false;
 
         for (Vehicle v : trobarVehicle) {
-            if (!matriculesLlogades.contains(v.getMatricula())) {
+            if (!matriculesLlogades.contains(v.getMatricula())) { // Comprovar quins están disponibles per alquilar
                 hiHaDisponibles = true;
                 System.out.println(v);
                 System.out.println("==========================================");
@@ -215,7 +216,7 @@ public class Client {
         input.nextLine();
 
 
-        if (seleccio <= 0 || seleccio > vehiclesLlogats.size()) {
+        if (seleccio <= 0 || seleccio > vehiclesLlogats.size()) { // Comprovar la seleccio
             System.out.println("Operació cancel·lada o selecció no vàlida.");
             return;
         }
@@ -226,11 +227,9 @@ public class Client {
         String confirmacio = input.nextLine();
 
         if (confirmacio.equalsIgnoreCase("s")) {
-            // Eliminar el lloguer i retornar el vehicle a la llista de disponibles
             // Verificant que aquest client és qui va llogar el vehicle
             boolean retornatCorrectament = admin.eliminarLloguer(matriculaARetornar, unicID);
 
-            // Si es va retornar correctament, el missatge ja s'ha mostrat en el mètode eliminarLloguer
             if (!retornatCorrectament) {
                 System.out.println("No s'ha pogut retornar el vehicle. Comprova que siguis el client correcte.");
             }

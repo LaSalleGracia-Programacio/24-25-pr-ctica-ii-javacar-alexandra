@@ -13,8 +13,8 @@ public class Main {
 
 
     public static void main(String[] args) {
-        a= new Administrador(vehicles, clients);
-        creacioClients();
+        a= new Administrador(vehicles, clients); // Crear un administrador perque sino dona error
+        creacioClients(); //
         creacioVehicles();
         if (!clients.isEmpty()) {
             c = clients.get(0);
@@ -25,7 +25,7 @@ public class Main {
         menuPrincipal();
     }
 
-    public static void menuPrincipal(){
+    public static void menuPrincipal(){ // Metode per el menú principal
         Scanner input = new Scanner(System.in);
         boolean sortir = false;
         do {
@@ -35,7 +35,7 @@ public class Main {
                     2. Client
                     3. Sortir""");
             int opcio = input.nextInt();
-            input.nextLine(); //consumir salto de linea
+            input.nextLine(); // Consumir salt de linea
             switch (opcio) {
                 case 1:
                     a.menuAdmin();
@@ -58,13 +58,12 @@ public class Main {
 
 
     public static void creacioClients(){
+        // Crear clients de base
         clients.add(new Client(1, "Joan", "Garcia", a));
         clients.add(new Client(2, "Maria", "Lopez", a));
         clients.add(new Client(3, "Pere", "Martinez", a));
         clients.add(new Client(4, "Laura", "Soler", a));
         clients.add(new Client(5, "Andreu", "Puig", a));
-
-        System.out.println("S'han creat " + clients.size() + " clients d'exemple.");
     }
     public static void creacioVehicles(){
         // Crear motors
@@ -116,7 +115,7 @@ public class Main {
         Cotxe cotxe1 = new Cotxe("1234ABC", "Seat", "Ibiza", 50.0, 5, motorGasolina, rodesCotxe1);
         cotxe1.setAnyFabricacio(2018);
 
-        Cotxe cotxe2 = new Cotxe("5678DEF", "Volkswagen", "Golf", 65.0, 5, motorDiesel, rodesCotxe2);
+        Cotxe cotxe2 = new Cotxe("5678DEF", "Volkswagen", "Golf", 65.0, 5, motorHibrid, rodesCotxe2);
         cotxe2.setAnyFabricacio(2020);
 
         Cotxe cotxe3 = new Cotxe("9012GHI", "Tesla", "Model 3", 95.0, 5, motorElectric, rodesCotxe1);
@@ -149,18 +148,16 @@ public class Main {
         vehicles.add(furgoneta2);
         vehicles.add(furgoneta3);
 
-        System.out.println("S'han creat " + vehicles.size() + " vehicles d'exemple.");
-
     }
-    public static void seleccionarClient() {
-        if (clients.isEmpty()) {
+    public static void seleccionarClient() { // Metode per escollir el client
+        if (clients.isEmpty()) {  //si no hi ha clients torna al menu
             System.out.println("No hi ha clients registrats.");
             c = null;
             return;
         }
 
         System.out.println("Selecciona un client:");
-        for (int i = 0; i < clients.size(); i++) {
+        for (int i = 0; i < clients.size(); i++) { // Bucle per printejar tots els clients
             Client client = clients.get(i);
             System.out.println((i + 1) + ". " + client.getNom() + " " + client.getCognom() + " (ID: " + client.getUnicID() + ")");
         }
@@ -168,7 +165,7 @@ public class Main {
         int seleccio= input.nextInt();
         input.nextLine();
 
-        if (seleccio > 0 && seleccio <= clients.size()) {
+        if (seleccio > 0 && seleccio <= clients.size()) { // Comprovar si la seleccio es correcta
             c = clients.get(seleccio - 1);
             System.out.println("Has seleccionat a: " + c.getNom() + " " + c.getCognom());
         } else {
