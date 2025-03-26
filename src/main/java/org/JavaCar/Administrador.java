@@ -172,9 +172,30 @@ public class Administrador {
         }
     }
 
+    public List<String> getMatriculesLlogadesPerClient(int clientID) {
+        List<String> matricules = new ArrayList<>();
+        for (Lloguer lloguer : lloguers) {
+            if (lloguer.getClientID() == clientID) {
+                matricules.add(lloguer.getMatricula());
+            }
+        }
+        return matricules;
+    }
+
+    public List<String> getMatriculesLlogades() {
+        List<String> matricules = new ArrayList<>();
+        for (Lloguer lloguer : lloguers) {
+            matricules.add(lloguer.getMatricula());
+        }
+        return matricules;
+    }
+
     public void veureVehiclesAlquilats() {
         System.out.println("Mostrant vehicles actualment alquilats...");
 
+    }
+    public void afegirLloguer(int clientID, String matricula, int dies) {
+        lloguers.add(new Lloguer(clientID, matricula, dies));
     }
 
 }

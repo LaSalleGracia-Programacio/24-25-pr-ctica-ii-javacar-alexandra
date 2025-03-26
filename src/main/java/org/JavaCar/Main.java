@@ -55,11 +55,11 @@ public class Main {
 
 
     public static void creacioClients(){
-        clients.add(new Client(1, "Joan", "Garcia"));
-        clients.add(new Client(2, "Maria", "Lopez"));
-        clients.add(new Client(3, "Pere", "Martinez"));
-        clients.add(new Client(4, "Laura", "Soler"));
-        clients.add(new Client(5, "Andreu", "Puig"));
+        clients.add(new Client(1, "Joan", "Garcia", a));
+        clients.add(new Client(2, "Maria", "Lopez", a));
+        clients.add(new Client(3, "Pere", "Martinez", a));
+        clients.add(new Client(4, "Laura", "Soler", a));
+        clients.add(new Client(5, "Andreu", "Puig", a));
 
         System.out.println("S'han creat " + clients.size() + " clients d'exemple.");
     }
