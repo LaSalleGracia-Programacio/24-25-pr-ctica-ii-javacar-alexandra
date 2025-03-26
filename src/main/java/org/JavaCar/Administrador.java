@@ -9,6 +9,8 @@ public class Administrador {
     private List<Vehicle> vehicles;
     private List<Client> clients;
 
+    private List<Lloguer> lloguers = new ArrayList<>();
+
     public Administrador(List<Vehicle> vehicles, List<Client> clients) {
         this.vehicles = vehicles;
         this.clients = clients;

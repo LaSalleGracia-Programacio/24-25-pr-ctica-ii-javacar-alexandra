@@ -16,6 +16,12 @@ public class Main {
         a= new Administrador(vehicles, clients);
         creacioClients();
         creacioVehicles();
+        if (!clients.isEmpty()) {
+            c = clients.get(0);
+        } else {
+            System.out.println("Error: No hi ha clients al sistema!");
+            return;
+        }
         menuPrincipal();
     }
 
@@ -25,8 +31,8 @@ public class Main {
         do {
             System.out.println("""
                     Indiqui el tipus d'usuari:
-                    1. Client
-                    2. Administrador
+                    1. Aministrador
+                    2. Client
                     3. Sortir""");
             int opcio = input.nextInt();
             input.nextLine(); //consumir salto de linea

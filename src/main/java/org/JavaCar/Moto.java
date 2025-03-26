@@ -23,7 +23,7 @@ public class Moto extends Vehicle {
 
     @Override
     public String toString() {
-        String motoInfo = "Marca: " + marca + " | " +
+        return "Marca: " + marca + " | " +
                 "Model: " + model + "\n" +
                 "Matricula: " + matricula + " | " +
                 "Any fabricació: " + anyFabricacio + "\n" +
@@ -31,7 +31,6 @@ public class Moto extends Vehicle {
                 "Cilindrada: " + cilindrada + "\n" +
                 "Tipus de motor: " + motor.getTipus() + " | " +
                 "Marca de roda: " + rodes[0].getMarca() + "\n";
-        return motoInfo;
     }
 
     public void setCilindrada(int cilindrada) {

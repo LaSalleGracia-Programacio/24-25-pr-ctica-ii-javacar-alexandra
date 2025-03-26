@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ea1b6622-cabf-4029-8ce0-e0dde2e5d840" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/JavaCar/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/JavaCar/Administrador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/Administrador.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/JavaCar/Administrador.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/JavaCar/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/JavaCar/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/JavaCar/Moto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/JavaCar/Moto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/JavaCar/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
