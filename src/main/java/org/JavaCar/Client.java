@@ -145,7 +145,24 @@ public class Client {
 
         List<Vehicle> trobarVehicle = GestorLloguers.filtrar(vehicles, preu);
 
-        System.out.println(trobarVehicle);
+        if (trobarVehicle.isEmpty()) {
+            System.out.println("No s'han trobat vehicles amb un preu inferior a " + preu + "€.");
+            return;
+        }
+
+        System.out.println("Vehicles amb preu inferior a " + preu + "€:");
+        System.out.println("==========================================");
+
+        // Obtenir les matrícules dels vehicles llogats
+        List<String> matriculesLlogades = admin.getMatriculesLlogades();
+
+        for (Vehicle v : trobarVehicle) {
+            // Indicar si el vehicle està disponible o llogat
+            String estat = matriculesLlogades.contains(v.getMatricula()) ? "(LLOGAT)" : "(DISPONIBLE)";
+            System.out.println(estat);
+            System.out.println(v);
+            System.out.println("==========================================");
+        }
 
     }
 
