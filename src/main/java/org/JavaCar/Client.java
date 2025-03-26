@@ -40,6 +40,7 @@ public class Client {
                     5. Veure els teus vehicles alquilats
                     6. Tornar enrere""");
             int opcio = input.nextInt();
+            input.nextLine();
 
             switch (opcio) {
                 case 1:
