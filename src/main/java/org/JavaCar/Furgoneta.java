@@ -35,9 +35,6 @@ public class Furgoneta extends Vehicle {
         return infoFurgoneta;
     }
 
-
-
-
     public void setCapacitatCarga(int capacitatCarga) {
         this.capacitatCarga = capacitatCarga;
     }
