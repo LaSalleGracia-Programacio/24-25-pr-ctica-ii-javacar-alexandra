@@ -25,8 +25,8 @@ public class Main {
         do {
             System.out.println("""
                     Indiqui el tipus d'usuari:
-                    1. Administrador
-                    2. Client
+                    1. Client
+                    2. Administrador
                     3. Sortir""");
             int opcio = input.nextInt();
             input.nextLine(); //consumir salto de linea

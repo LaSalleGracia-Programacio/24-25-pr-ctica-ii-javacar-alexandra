@@ -26,7 +26,7 @@ public class Administrador {
                     5. Tornar enrere
                     """);
             int opcio = input.nextInt();
-            input.nextLine(); // Consumir el salt de línia
+            input.nextLine();
 
             switch (opcio) {
                 case 1:
