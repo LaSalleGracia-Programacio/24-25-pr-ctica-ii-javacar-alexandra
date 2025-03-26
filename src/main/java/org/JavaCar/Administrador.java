@@ -242,7 +242,10 @@ public class Administrador {
     }
 
     public void veureIngressosTotals(){
-
+        System.out.println("Introdueix quants dies están llogats els cotxes:");
+        int dies=input.nextInt();
+        double ingressos = GestorLloguers.calcularIngressosTotals(vehicles, dies);
+        System.out.println("Els ingressos totals actuals son: " + ingressos + "€");
     }
     public void afegirLloguer(int clientID, String matricula, int dies) {
         lloguers.add(new Lloguer(clientID, matricula, dies));
