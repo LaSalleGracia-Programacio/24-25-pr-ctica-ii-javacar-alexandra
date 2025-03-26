@@ -181,6 +181,16 @@ public class Administrador {
 
         System.out.println("==========================================");
         System.out.println("Introdueix el número del vehicle que vols eliminar (0 per cancel·lar):");
+        int seleccio = input.nextInt();
+        input.nextLine();
+
+        if (seleccio <= 0 || seleccio > disponibles.size()) {
+            System.out.println("Operació cancel·lada o selecció no vàlida.");
+            return;
+        }
+
+        vehicles.remove(disponibles.get(seleccio - 1));
+        System.out.println("Vehicle eliminat correctament.");
 
     }
     public void veureVehicles() {
