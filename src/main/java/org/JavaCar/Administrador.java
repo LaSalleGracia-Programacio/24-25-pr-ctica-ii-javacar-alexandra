@@ -82,6 +82,7 @@ public class Administrador {
 
         System.out.println("Introdueix l'any de fabricació:");
         int anyFabricacio = input.nextInt();
+
         input.nextLine();
 
         System.out.println("Introdueix el tipus de motor (Gasolina, Diesel, Electric, Hibrid):");
@@ -141,10 +142,13 @@ public class Administrador {
         }
 
         nouVehicle.setAnyFabricacio(anyFabricacio);
+        //Calcular etiqueta ambiental
+        EtiquetaAmbiental etiqueta = nouVehicle.calculEtiqueta();
+        nouVehicle.setEtiquetaAmbiental(etiqueta);
+        System.out.println("Etiqueta ambiental assignada: " + etiqueta);
         vehicles.add(nouVehicle);
         System.out.println("Vehicle afegit correctament.");
 
-        System.out.println(nouVehicle);
     }
 
     public void eliminarVehicle() {
@@ -152,8 +156,18 @@ public class Administrador {
 
     }
     public void veureVehicles() {
-        System.out.println("Llistant tots els vehicles...");
+        if (vehicles.isEmpty()) {
+            System.out.println("No hi ha vehicles registrats.");
+            return;
+        }
 
+        System.out.println("Llista de tots els vehicles:");
+        System.out.println("==========================================");
+
+        for (Vehicle v : vehicles) {
+            System.out.println(v);
+            System.out.println("==========================================");
+        }
     }
 
     public void veureVehiclesAlquilats() {
