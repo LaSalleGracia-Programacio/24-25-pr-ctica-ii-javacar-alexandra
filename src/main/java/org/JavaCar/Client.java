@@ -55,6 +55,7 @@ public class Client {
                     break;
                 case 3:
                     filtrarVehicles(vehicles);
+                    break;
                 case 4:
                     retornarVehicle();
                     break;
@@ -176,14 +177,19 @@ public class Client {
         // Obtenir les matrícules dels vehicles llogats
         List<String> matriculesLlogades = admin.getMatriculesLlogades();
 
+        boolean hiHaDisponibles = false;
+
         for (Vehicle v : trobarVehicle) {
-            // Indicar si el vehicle està disponible o llogat
-            String estat = matriculesLlogades.contains(v.getMatricula()) ? "(LLOGAT)" : "(DISPONIBLE)";
-            System.out.println(estat);
-            System.out.println(v);
-            System.out.println("==========================================");
+            if (!matriculesLlogades.contains(v.getMatricula())) {
+                hiHaDisponibles=true;
+                System.out.println(v);
+                System.out.println("==========================================");
+            }
         }
 
+        if (!hiHaDisponibles) {
+            System.out.println("No hi ha vehicles disponibles amb aquest preu.");
+        }
     }
 
     public void retornarVehicle(){

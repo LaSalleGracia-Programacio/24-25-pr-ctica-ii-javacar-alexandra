@@ -165,14 +165,8 @@ public class Main {
             System.out.println((i + 1) + ". " + client.getNom() + " " + client.getCognom() + " (ID: " + client.getUnicID() + ")");
         }
 
-        int seleccio;
-        try {
-            String entrada = input.nextLine();
-            seleccio = Integer.parseInt(entrada);
-        } catch (NumberFormatException e) {
-            System.out.println("Si us plau, introdueix un número vàlid.");
-            seleccio = -1;
-        }
+        int seleccio= input.nextInt();
+        input.nextLine();
 
         if (seleccio > 0 && seleccio <= clients.size()) {
             c = clients.get(seleccio - 1);
