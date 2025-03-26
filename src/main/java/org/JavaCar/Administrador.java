@@ -225,5 +225,8 @@ public class Administrador {
 
         return true;
     }
+    public List<Lloguer> getLloguers() {
+        return lloguers;
+    }
 
 }

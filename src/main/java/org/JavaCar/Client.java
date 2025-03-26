@@ -32,9 +32,9 @@ public class Client {
         return cognom;
     }
 
-    public void menuClient(List<Vehicle> vehicles){
+    public void menuClient(List<Vehicle> vehicles) {
         boolean sortir = false;
-        do{
+        do {
             System.out.println("""
                     Benvingut a JavaCar!Escull una opció:
                     1. Alquilar un vehicle
@@ -60,7 +60,7 @@ public class Client {
                     retornarVehicle();
                     break;
                 case 5:
-                    veureAlquilats();
+                    veureAlquilats(vehicles);
                     break;
                 case 6:
                     sortir = true;
@@ -70,7 +70,8 @@ public class Client {
             }
         } while (!sortir);
     }
-    public void alquilarVehicle(List<Vehicle> vehicles){
+
+    public void alquilarVehicle(List<Vehicle> vehicles) {
         // Mostrar vehicles disponibles
         List<Vehicle> disponibles = new ArrayList<>();
         List<String> matriculesLlogades = admin.getMatriculesLlogades();
@@ -91,8 +92,8 @@ public class Client {
 
         for (int i = 0; i < disponibles.size(); i++) {
             System.out.println((i + 1) + ". " + disponibles.get(i).getMarca() + " " +
-                        disponibles.get(i).getModel() + " (Matrícula: " + disponibles.get(i).getMatricula() +
-                        ") - Preu/dia: " + disponibles.get(i).getPreuBase() + "€");
+                    disponibles.get(i).getModel() + " (Matrícula: " + disponibles.get(i).getMatricula() +
+                    ") - Preu/dia: " + disponibles.get(i).getPreuBase() + "€");
         }
 
         System.out.println("==========================================");
@@ -137,7 +138,7 @@ public class Client {
         }
     }
 
-    public void mostrarVehicles(List<Vehicle> vehicles){
+    public void mostrarVehicles(List<Vehicle> vehicles) {
         // Obtenir les matrícules dels vehicles llogats
         List<String> matriculesLlogades = admin.getMatriculesLlogades();
 
@@ -159,7 +160,7 @@ public class Client {
         }
     }
 
-    public void filtrarVehicles(List<Vehicle> vehicles){
+    public void filtrarVehicles(List<Vehicle> vehicles) {
 
         System.out.println("Digues el preu per el qual vols filtrar: ");
         double preu = input.nextDouble();
@@ -181,7 +182,7 @@ public class Client {
 
         for (Vehicle v : trobarVehicle) {
             if (!matriculesLlogades.contains(v.getMatricula())) {
-                hiHaDisponibles=true;
+                hiHaDisponibles = true;
                 System.out.println(v);
                 System.out.println("==========================================");
             }
@@ -192,7 +193,7 @@ public class Client {
         }
     }
 
-    public void retornarVehicle(){
+    public void retornarVehicle() {
         List<String> vehiclesLlogats = admin.getMatriculesLlogadesPerClient(unicID);
 
         if (vehiclesLlogats.isEmpty()) {
@@ -210,7 +211,7 @@ public class Client {
         System.out.println("==========================================");
         System.out.println("Introdueix el número del vehicle que vols retornar:");
 
-        int seleccio= input.nextInt();
+        int seleccio = input.nextInt();
         input.nextLine();
 
 
@@ -238,9 +239,42 @@ public class Client {
         }
     }
 
-    public void veureAlquilats(){
+    public void veureAlquilats(List<Vehicle> vehicles) {
+        // Obtenir els vehicles llogats per aquest client
+        List<String> vehiclesLlogats = admin.getMatriculesLlogadesPerClient(unicID);
 
+        if (vehiclesLlogats.isEmpty()) {
+            System.out.println("No tens cap vehicle llogat actualment.");
+            return;
+        }
+
+        System.out.println("Els teus vehicles llogats:");
+        System.out.println("==========================================");
+
+        List<Lloguer> lloguers = admin.getLloguers();
+
+        for (String matricula : vehiclesLlogats) {
+            // Buscar el vehicle
+            for (Vehicle v : vehicles) {
+                if (v.getMatricula().equals(matricula)) {
+
+                    // Buscar els dies de lloguer
+                    int dies = 0;
+                    for (Lloguer lloguer : lloguers) {
+                        if (lloguer.getMatricula().equals(matricula) && lloguer.getClientID() == unicID) {
+                            dies = lloguer.getDies();
+                            break;
+                        }
+                    }
+
+                    System.out.println("Vehicle: " + v.getMarca() + " " + v.getModel());
+                    System.out.println("Matrícula: " + v.getMatricula());
+                    System.out.println("Dies de lloguer: " + dies);
+                    System.out.println("Cost total: " + v.calcularPreu(dies) + "€");
+                    System.out.println("==========================================");
+                    break;
+                }
+            }
+        }
     }
-
-
 }
