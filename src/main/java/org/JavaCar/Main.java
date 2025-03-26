@@ -35,11 +35,7 @@ public class Main {
                     a.menuAdmin();
                     break;
                 case 2:
-<<<<<<< HEAD
-                    menuAdministrador();
-=======
                     c.menuClient(vehicles);
->>>>>>> a7a7caafd6cb9d9d07d580a7d4e6ade4248e7369
                     break;
                 case 3:
                     sortir = true;
