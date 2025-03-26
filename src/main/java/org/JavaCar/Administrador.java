@@ -25,7 +25,8 @@ public class Administrador {
                     2. Eliminar un vehicle
                     3. Veure tots els vehicles
                     4. Veure vehicles alquilats
-                    5. Tornar enrere
+                    5. Veure ingressos totals
+                    6. Tornar enrere
                     """);
             int opcio = input.nextInt();
             input.nextLine();
@@ -44,6 +45,9 @@ public class Administrador {
                     veureVehiclesAlquilats();
                     break;
                 case 5:
+                    veureIngressosTotals();
+                    break;
+                case 6:
                     sortir = true;
                     break;
                 default:
@@ -172,6 +176,45 @@ public class Administrador {
         }
     }
 
+    public void veureVehiclesAlquilats() {
+        List<String> matriculesLlogades = getMatriculesLlogades();
+
+        if (matriculesLlogades.isEmpty()) {
+            System.out.println("No hi ha vehicles llogats actualment.");
+            return;
+        }
+
+        System.out.println("Llista de vehicles llogats:");
+        System.out.println("==========================================");
+
+        for (Vehicle v : vehicles) {
+            if (matriculesLlogades.contains(v.getMatricula())) {
+                System.out.println(v);
+                // Buscar el client que té llogat aquest vehicle
+                for (Lloguer lloguer : lloguers) {
+                    if (lloguer.getMatricula().equals(v.getMatricula())) {
+                        int clientID = lloguer.getClientID();
+                        Client client = trobarClient(clientID);
+
+                        if (client != null) {
+                            System.out.println("Llogat per: " + client.getNom() + " " + client.getCognom());
+                            System.out.println("Dies de lloguer: " + lloguer.getDies());
+                        }
+
+                        break;
+                    }
+                }
+                System.out.println("==========================================");
+            }
+        }
+    }
+
+    public void veureIngressosTotals(){
+
+    }
+    public void afegirLloguer(int clientID, String matricula, int dies) {
+        lloguers.add(new Lloguer(clientID, matricula, dies));
+    }
     public List<String> getMatriculesLlogadesPerClient(int clientID) {
         List<String> matricules = new ArrayList<>();
         for (Lloguer lloguer : lloguers) {
@@ -188,14 +231,6 @@ public class Administrador {
             matricules.add(lloguer.getMatricula());
         }
         return matricules;
-    }
-
-    public void veureVehiclesAlquilats() {
-        System.out.println("Mostrant vehicles actualment alquilats...");
-
-    }
-    public void afegirLloguer(int clientID, String matricula, int dies) {
-        lloguers.add(new Lloguer(clientID, matricula, dies));
     }
 
     public boolean eliminarLloguer(String matricula, int clientID) {
@@ -227,6 +262,15 @@ public class Administrador {
     }
     public List<Lloguer> getLloguers() {
         return lloguers;
+    }
+
+    private Client trobarClient(int id) {
+        for (Client client : clients) {
+            if (client.getUnicID() == id) {
+                return client;
+            }
+        }
+        return null;
     }
 
 }
