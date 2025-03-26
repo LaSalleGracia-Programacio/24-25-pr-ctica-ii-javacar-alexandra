@@ -158,7 +158,29 @@ public class Administrador {
     }
 
     public void eliminarVehicle() {
-        System.out.println("Eliminant un vehicle...");
+        // Obtenir les matrícules dels vehicles llogats
+        List<String> matriculesLlogades = getMatriculesLlogades();
+
+        // Mostrar només els vehicles disponibles
+        System.out.println("Vehicles disponibles per eliminar:");
+        System.out.println("==========================================");
+
+        List<Vehicle> disponibles = new ArrayList<>();
+        for (Vehicle v : vehicles) {
+            if (!matriculesLlogades.contains(v.getMatricula())) {
+                disponibles.add(v);
+                System.out.println(disponibles.size() + ". " + v.getMarca() + " " + v.getModel() +
+                        " (Matrícula: " + v.getMatricula() + ")");
+            }
+        }
+
+        if (disponibles.isEmpty()) {
+            System.out.println("Tots els vehicles estan llogats actualment. No es pot eliminar cap.");
+            return;
+        }
+
+        System.out.println("==========================================");
+        System.out.println("Introdueix el número del vehicle que vols eliminar (0 per cancel·lar):");
 
     }
     public void veureVehicles() {
