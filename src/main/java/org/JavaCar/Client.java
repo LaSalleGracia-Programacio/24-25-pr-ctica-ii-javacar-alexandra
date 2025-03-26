@@ -12,6 +12,7 @@ public class Client {
     private String cognom;
     private Administrador admin;
 
+
     public Client(int unicID, String nom, String cognom, Administrador admin) {
         this.unicID = unicID;
         this.nom = nom;
@@ -50,7 +51,7 @@ public class Client {
                     alquilarVehicle(vehicles);
                     break;
                 case 2:
-                    mostrarVehicles();
+                    mostrarVehicles(vehicles);
                     break;
                 case 3:
                     filtrarVehicles(vehicles);
@@ -83,6 +84,9 @@ public class Client {
             System.out.println("No hi ha vehicles disponibles per llogar.");
             return;
         }
+
+        System.out.println("Introdueix el teu ID");
+        int unicID= input.nextInt();;
 
         System.out.println("Vehicles disponibles per llogar:");
         System.out.println("==========================================");
@@ -129,13 +133,32 @@ public class Client {
         if (confirmacio.equalsIgnoreCase("s")) {
             admin.afegirLloguer(unicID, vehicleSeleccionat.getMatricula(), dies);
             System.out.println("Vehicle llogat correctament!");
+            System.out.println();
         } else {
             System.out.println("Operació cancel·lada.");
         }
     }
 
-    public void mostrarVehicles(){
+    public void mostrarVehicles(List<Vehicle> vehicles){
+        // Obtenir les matrícules dels vehicles llogats
+        List<String> matriculesLlogades = admin.getMatriculesLlogades();
 
+        System.out.println("Llistat de vehicles disponibles:");
+        System.out.println("==========================================");
+
+        boolean hiHaDisponibles = false;
+
+        for (Vehicle v : vehicles) {
+            if (!matriculesLlogades.contains(v.getMatricula())) {
+                hiHaDisponibles = true;
+                System.out.println(v);
+                System.out.println("==========================================");
+            }
+        }
+
+        if (!hiHaDisponibles) {
+            System.out.println("No hi ha vehicles disponibles actualment.");
+        }
     }
 
     public void filtrarVehicles(List<Vehicle> vehicles){
