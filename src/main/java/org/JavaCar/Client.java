@@ -36,7 +36,7 @@ public class Client {
         boolean sortir = false;
         do {
             System.out.println("""
-                    Benvingut a JavaCar!Escull una opció:
+                    Benvingut! Escull una opció:
                     1. Alquilar un vehicle
                     2. Veure vehicles disponibles
                     3  Filtrar vehicles per preu

@@ -19,7 +19,7 @@ public class Administrador {
         boolean sortir = false;
         do {
             System.out.println("""
-                    Benvingut a la gestió de JavaCar! Escull una opció:
+                    Benvingut! Escull una opció:
                     1. Afegir un vehicle
                     2. Eliminar un vehicle
                     3. Veure tots els vehicles
